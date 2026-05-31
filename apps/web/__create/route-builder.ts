@@ -9,7 +9,14 @@ const API_BASENAME = '/api';
 const api = new Hono();
 
 // Get current directory
-const __dirname = join(fileURLToPath(new URL('.', import.meta.url)), '../src/app/api');
+// In dev, import.meta.url points to __create/, so '../src/app/api' resolves correctly.
+// In production, the bundle lives at build/server/assets/, so we need '../../../src/app/api'
+// to traverse back up to the project root and into the source API directory.
+const isDev = import.meta.env.DEV;
+const __dirname = join(
+  fileURLToPath(new URL('.', import.meta.url)),
+  isDev ? '../src/app/api' : '../../../src/app/api'
+);
 if (globalThis.fetch) {
   globalThis.fetch = updatedFetch;
 }
