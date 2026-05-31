@@ -75,6 +75,6 @@ app.get("*", async (c) => {
 });
 
 const port = Number(process.env.PORT) || 3000;
-serve({ fetch: app.fetch, port }, (info) => {
-  console.log(`🚀 FanPass server running on port ${info.port}`);
+serve({ fetch: app.fetch, port, hostname: "0.0.0.0" }, (info) => {
+  console.log(`🚀 FanPass server running on ${info.address}:${info.port}`);
 });
