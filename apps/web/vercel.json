@@ -1,10 +1,16 @@
 {
   "buildCommand": "npm install --legacy-peer-deps && npm run build",
   "installCommand": "npm install --legacy-peer-deps",
-  "outputDirectory": "build/client",
   "framework": null,
+  "functions": {
+    "api/server.js": {
+      "runtime": "nodejs20.x",
+      "maxDuration": 30
+    }
+  },
   "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+    { "source": "/assets/(.*)", "destination": "/api/server" },
+    { "source": "/(.*)", "destination": "/api/server" }
   ],
   "headers": [
     {
