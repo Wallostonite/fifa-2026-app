@@ -178,7 +178,7 @@ export async function GET(request) {
   // DB override — if DATABASE_URL set and rows exist, prefer DB
   if (process.env.DATABASE_URL) {
     try {
-      const { default: sql } = await import("@/app/api/utils/sql");
+      const { default: sql } = await import("../utils/sql.js");
       const dbMatches = team
         ? await sql`SELECT * FROM matches WHERE team1 ILIKE ${"%" + team + "%"} OR team2 ILIKE ${"%" + team + "%"} ORDER BY match_date ASC`
         : await sql`SELECT * FROM matches ORDER BY match_date ASC`;

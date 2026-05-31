@@ -1,4 +1,4 @@
-import { GET as getMatches } from "../matches/route";
+import { GET as getMatches } from "../matches/route.js";
 
 // Persist score store across hot-reloads in dev via globalThis
 if (!globalThis.__FIFA_SCORE_STORE__) globalThis.__FIFA_SCORE_STORE__ = new Map();
@@ -32,7 +32,7 @@ function matchMinute(matchDate) {
 async function loadScoresFromDB() {
   if (!process.env.DATABASE_URL) return {};
   try {
-    const { default: sql } = await import("@/app/api/utils/sql");
+    const { default: sql } = await import("../utils/sql.js");
     const rows = await sql`SELECT * FROM match_scores`;
     const map = {};
     for (const r of rows) map[r.match_id] = r;
@@ -111,7 +111,7 @@ export async function PATCH(request) {
     // Persist to DB if available
     if (process.env.DATABASE_URL) {
       try {
-        const { default: sql } = await import("@/app/api/utils/sql");
+        const { default: sql } = await import("../utils/sql.js");
         await sql`
           INSERT INTO match_scores (match_id, team1_score, team2_score, match_minute, status_override)
           VALUES (${matchId}, ${update.team1_score}, ${update.team2_score}, ${update.match_minute}, ${update.status_override})

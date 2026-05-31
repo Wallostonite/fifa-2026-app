@@ -8,3 +8,4 @@ dist/
 caches/
 *.log
 .DS_Store
+apps/web/build/

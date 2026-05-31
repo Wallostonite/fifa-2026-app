@@ -1,4 +1,4 @@
-import { GET as getCities } from "../route";
+import { GET as getCities } from "../route.js";
 
 export async function GET(request, { params }) {
   const { id } = params;
