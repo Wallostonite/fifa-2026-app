@@ -31,7 +31,7 @@ function NotFoundScreen() {
   // doesn't make sense since the missing page may now exist.
   // useEffect with [] deps re-runs on Fast Refresh, but hasInitialized persists.
   useEffect(() => {
-    if (hasInitialized && typeof window !== 'undefined' &&  process.env.EXPO_PUBLIC_CREATE_ENV === 'DEVELOPMENT') {
+    if (hasInitialized && typeof window !== 'undefined' &&  __DEV__) {
       window.location.reload();
     }
     hasInitialized = true;
