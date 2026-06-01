@@ -15,7 +15,7 @@ const handleResolveRequestError = ({ error, context, moduleName, platform }) => 
   });
   if (process.env.NODE_ENV === 'production') throw error;
   if (platform === 'android') throw error;
-  if (!__DEV__ && process.env.EXPO_PUBLIC_CREATE_ENV !== 'DEVELOPMENT') throw error;
+  if (!__DEV__) throw error;
 
   // Build a deterministic virtual file path for this failed request
   const key = `${moduleName}|${context.originModulePath}|${platform}`;

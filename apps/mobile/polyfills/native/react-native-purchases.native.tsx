@@ -8,7 +8,7 @@
 // export" — leaving the app stuck on a black/splash screen forever.
 //
 // This polyfill is wired up in metro.config.js for native platforms only
-// when EXPO_PUBLIC_CREATE_ENV !== 'PRODUCTION'. Production EAS builds keep
+// in development builds. Production EAS builds keep
 // the real SDK, so paid users hit RevenueCat as normal.
 
 const noopAsync = async () => undefined;
