@@ -77,7 +77,10 @@ export default function Nav({ children }) {
 
         {/* Footer */}
         <div className="px-5 py-4 border-t border-gray-800">
-          <p className="text-xs text-gray-600">FIFA World Cup 2026™</p>
+          <Link to="/privacy" onClick={() => setOpen(false)} className="text-xs text-gray-500 hover:text-white transition-colors">
+            Privacy Policy
+          </Link>
+          <p className="text-xs text-gray-600 mt-2">FIFA World Cup 2026™</p>
           <p className="text-xs text-gray-600">Jun 11 – Jul 19, 2026</p>
         </div>
       </aside>
